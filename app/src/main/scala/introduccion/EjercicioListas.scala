@@ -12,9 +12,18 @@ class EjercicioListas {
   * @throws IllegalArgumentException si n es negativo
   */
   def repetirListas(lista: List[Int], n: Int): List[List[Int]] = {
+    if (n < 0){
+      throw new IllegalArgumentException ("n no puede ser menor a 0")
+    }
     var listaRepetida : List[List[Int]] = List()
-    //Complete el código
-    throw new UnsupportedOperationException("No implementado aún")
+    for(i<-0 until lista.length){
+      var tempList : List[Int] = List();
+      for(_ <-0 until n){
+        tempList = tempList :+ lista(i)
+      }
+      listaRepetida = listaRepetida :+ tempList
+    }
+    return listaRepetida
   }
   /*
   * Punto 3: Filtrar listas
@@ -28,7 +37,16 @@ class EjercicioListas {
   def filtrarListas(criterioIn: String, n: Int, lista: List[Int]) : List[Int] = {
     var criterio : String = criterioIn.toLowerCase()
     var listaFiltrada : List[Int] = List()
-    //Complete el código
-    throw new UnsupportedOperationException("No implementado aún")
+
+    val result = criterio match {
+      case "mayor" => lista.filter(_ > n)
+      case "menor" => lista.filter(_ < n)
+      case "mayoroigual" => lista.filter(_ >= n)
+      case "igual" => lista.filter(_ == n)
+      case "diferente" => lista.filter(_ != n)
+      case "menoroigual" => lista.filter(_ <= n)
+      case _ => throw new IllegalArgumentException("El criterio no es valido")
+    }
+    return result
   }
 }

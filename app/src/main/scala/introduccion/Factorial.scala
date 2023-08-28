@@ -6,7 +6,9 @@ class Factorial() {
     var factorial : BigInt = 1
     for (i <- 1 to n) {
       factorial = factorial * i
+
     }
     return factorial
   }
 }
+
